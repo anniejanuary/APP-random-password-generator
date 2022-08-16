@@ -9,20 +9,41 @@ nr_symbols = int(input(f"How many symbols would you like?\n"))
 nr_numbers = int(input(f"How many numbers would you like?\n"))
 
 
-#    Order not randomised:
+#    A Order not randomised:
+password_in_order_list = []
 
-random_letters = random.choices(letters, k = nr_letters)
-random_symbols = random.choices(symbols, k = nr_symbols)
-random_numbers = random.choices(numbers, k = nr_numbers)
-
-password_in_order_list = random_letters + random_symbols + random_numbers
+for x in range (1, nr_letters +1):
+  password_in_order_list += random.choice(letters)   #   or:  password_in_order_list.append(random.choice(letters))
+  
+for x in range (1, nr_numbers +1):
+  password_in_order_list += random.choice(numbers)
+  
+for x in range (1, nr_symbols +1):
+  password_in_order_list += random.choice(symbols)
+  
 password_in_order_str = ''.join(password_in_order_list)
 print("Your password is:", password_in_order_str)
 
 
-#     Order of characters randomised:
+#    A2 another way:
+#random_letters = random.choices(letters, k = nr_letters)
+#random_symbols = random.choices(symbols, k = nr_symbols)
+#random_numbers = random.choices(numbers, k = nr_numbers)
 
-password_length = nr_letters + nr_symbols + nr_numbers
-password_shuffled_list = random.sample(password_in_order_str, password_length)
-password_shuffled_str = ''.join(password_shuffled_list)
-print("Your shuffled password is:", password_shuffled_str)
+#password_in_order_list = random_letters + random_symbols + random_numbers
+#password_in_order_str = ''.join(password_in_order_list)
+#print("Your password is:", password_in_order_str)
+
+
+#     B Order of characters randomised:
+
+random.shuffle(password_in_order_list)
+password_in_order_str = ''.join(password_in_order_list)
+print(f"Your shuffled password is: {password_in_order_str}")
+
+#     B2 another way: (cont'd from A2)
+
+#password_length = nr_letters + nr_symbols + nr_numbers
+#password_shuffled_list = random.sample(password_in_order_str, password_length)
+#password_shuffled_str = ''.join(password_shuffled_list)
+#print("Your shuffled password is:", password_shuffled_str)
